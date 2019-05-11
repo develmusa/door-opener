@@ -9,10 +9,6 @@ class RelayController:
     CLOSE_RELAY_CMD = [0xA0, 0x01, 0x01, 0xA2]
     OPEN_RELAY_CMD = [0xA0, 0x01, 0x00, 0xA1]
 
-    # Initializer / Instance Attributes
-    def __init__(self, vendor_id, product_id):
-        self._ep = _get_usb_endpoint(vendor_id, product_id)
-
     def _get_usb_endpoint(self, vendor_id, product_id):
         # search for our device by product and vendor ID
         dev = usb.core.find(idVendor=vendor_id, idProduct=product_id)
@@ -32,6 +28,12 @@ class RelayController:
             usb.util.ENDPOINT_OUT)
         assert ep is not None
         return ep
+
+    # Initializer / Instance Attributes
+    def __init__(self, vendor_id, product_id):
+        self._ep = _get_usb_endpoint(vendor_id, product_id)
+
+
 
     def activate_relay(self, activation_time):
         _ep.write(OPEN_RELAY_CMD)
