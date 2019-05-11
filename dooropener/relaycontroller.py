@@ -2,6 +2,7 @@
 import time
 import usb.core
 import usb.util
+import threading
 
 class RelayController:
 
@@ -36,5 +37,8 @@ class RelayController:
 
     def activate_relay(self, activation_time):
         self._ep.write(self.CLOSE_RELAY_CMD)
-        time.sleep(activation_time)
+        timer = threading.Timer(activation_time, self._deactivate_relay)
+        timer.start() 
+    
+    def _deactivate_relay(self):
         self._ep.write(self.OPEN_RELAY_CMD)
