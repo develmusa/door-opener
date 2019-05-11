@@ -4,7 +4,7 @@ from webserver import WebServer
 # Constants
 VENDOR_ID=0x1a86
 PRODUCT_ID=0x7523
-HOST='localhost'
+HOST='0.0.0.0'
 PORT=1650
 
 def main():
