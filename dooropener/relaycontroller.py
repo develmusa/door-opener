@@ -1,13 +1,14 @@
-class RelayController:
+# Import
+import time
+import usb.core
+import usb.util
 
-    # Import
-    import time
-    import usb.core
-    import usb.util
+class RelayController:
 
     # Class Attribute
     CLOSE_RELAY_CMD = [0xA0, 0x01, 0x01, 0xA2]
     OPEN_RELAY_CMD = [0xA0, 0x01, 0x00, 0xA1]
+
 
     # Initializer / Instance Attributes
     def __init__(self, vendor_id, product_id):
@@ -34,6 +35,6 @@ class RelayController:
         return ep
 
     def activate_relay(self, activation_time):
-        _ep.write(OPEN_RELAY_CMD)
+        self._ep.write(self.CLOSE_RELAY_CMD)
         time.sleep(activation_time)
-        _ep.write(CLOSE_RELAY_CMD)
+        self._ep.write(self.OPEN_RELAY_CMD)
