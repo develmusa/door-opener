@@ -1,15 +1,35 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Command
 
-with open('LICENSE') as f:
-    license = f.read()
+# Package meta-data.
+NAME = 'door-opener'
+DESCRIPTION = 'Package for opening door via RaspberryPi and Relay.'
+URL = 'https://github.com/develmusa/door-opener'
+EMAIL = 'mail@samuelkrieg.com'
+AUTHOR = 'Samuel Krieg'
+REQUIRES_PYTHON = '>=3.2.0'
+VERSION = '1.0.0'
+
+# What packages are required for this module to be executed?
+REQUIRED = [
+    'bottle',
+]
+
+class InstallCommand(Command):
+    """Support setup.py upload."""
 
 setup(
-    name='door-opener',
-    version='1.0.0',
-    description='Package for opening door via RaspberryPi and Relay',
-    author='Samuel Krieg',
-    author_email='mail@samuelkrieg.com',
-    url='https://github.com/develmusa/door-opener',
-    license=license,
-    packages=find_packages(exclude=('tests', 'docs'))
+    name=NAME,
+    version=VERSION,
+    description=DESCRIPTION,
+    author=AUTHOR,
+    author_email=EMAIL,
+    python_requires=REQUIRES_PYTHON,
+    url=URL,
+    packages=find_packages(exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
+    install_requires=REQUIRED,
+    include_package_data=True,
+    license='MIT',
+    cmdclass={
+        'install': InstallCommand,
+    },
 )
