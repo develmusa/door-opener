@@ -1,5 +1,5 @@
-from dooropener.relaycontroller import RelayController
-from dooropener.webserver import WebServer
+from relaycontroller import RelayController
+from webserver import WebServer
 
 # Constants
 VENDOR_ID=0x1a86
