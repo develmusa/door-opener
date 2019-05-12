@@ -1,17 +1,20 @@
-class RelayController:
+# Import
+import time
+import usb.core
+import usb.util
+import threading
 
-    # Import
-    import time
-    import usb.core
-    import usb.util
+class RelayController:
 
     # Class Attribute
     CLOSE_RELAY_CMD = [0xA0, 0x01, 0x01, 0xA2]
     OPEN_RELAY_CMD = [0xA0, 0x01, 0x00, 0xA1]
 
+
     # Initializer / Instance Attributes
-    def __init__(self, vendor_id, product_id):
+    def __init__(self, vendor_id, product_id, activation_time):
         self._ep = self._get_usb_endpoint(vendor_id, product_id)
+        self._activation_time = activation_time
 
     def _get_usb_endpoint(self, vendor_id, product_id):
         # search for our device by product and vendor ID
@@ -33,7 +36,12 @@ class RelayController:
         assert ep is not None
         return ep
 
-    def activate_relay(self, activation_time):
-        _ep.write(OPEN_RELAY_CMD)
-        time.sleep(activation_time)
-        _ep.write(CLOSE_RELAY_CMD)
+    def activate_relay(self, activation_time=None):
+        if activation_time is None:
+            activation_time = self._activation_time
+        self._ep.write(self.CLOSE_RELAY_CMD)
+        timer = threading.Timer(activation_time, self._deactivate_relay)
+        timer.start() 
+    
+    def _deactivate_relay(self):
+        self._ep.write(self.OPEN_RELAY_CMD)
