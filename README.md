@@ -55,7 +55,10 @@ Simple Webserver to use RaspberryPi and a Relay to open or activate things.
 
 
 ### Install Software
-1. Clone door-opener: `git clone https://github.com/develmusa/door-opener.git`
+
+1. Install git (as user: pi): `sudo apt-get install git`
+2. Clone door-opener (as user: keyman): `git clone https://github.com/develmusa/door-opener.git`
+
 
 ### Setup for Connection
 
