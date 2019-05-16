@@ -63,10 +63,18 @@ Simple Webserver to use RaspberryPi and a Relay to open or activate things.
 4. Start door-opener: `python dooropener/dooropener.py`
 5. Test door-opener: Access Endpoint to activate the relay for 5 seconds `http://192.168.0.17:1666/sesame-open` or `http://192.168.0.17:1666/sesame-open/x` for x seconds.
 6. Add door-opener to autostart: 
-    - open /etc/rc.local
+    - open `/etc/rc.local`
     - add `nohup python /home/keyman/door-opener/dooropener.py &` before exit 0
 
 ### Setup for Connection
 
-- To connect from outside of your network you need a DNS. Take a look at [Duck DNS](https://www.duckdns.org/domains).
+To connect from outside of your network without your IP you need a DNS. Also you need to setup port forwarding on your router.
+
+1. Setup DNS: [Duck DNS](https://www.duckdns.org/) is a free Dynamic DNS provider
+    1. Sing up for Duck DNS
+    2. Add your domain
+    3. Keep your Duck DNS domain updated on your Raspberry Pi: Follow the steps on [Install Duck DNS](https://www.duckdns.org/install.jsp)
+    
+
+Take a look at [Duck DNS](https://www.duckdns.org/domains).
 - You also need to setup portforwarding on your router.
