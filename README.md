@@ -64,7 +64,7 @@ Simple Webserver to use RaspberryPi and a Relay to open or activate things.
 5. Test door-opener: Access Endpoint to activate the relay for 5 seconds `http://192.168.0.17:1666/sesame-open` or `http://192.168.0.17:1666/sesame-open/x` for x seconds.
 6. Add door-opener to autostart: 
     - open `/etc/rc.local`
-    - add `nohup python /home/keyman/door-opener/dooropener.py &` before exit 0
+    - add `nohup python /home/keyman/door-opener/dooropener/dooropener.py &` before exit 0
 
 ### Setup for Connection
 
