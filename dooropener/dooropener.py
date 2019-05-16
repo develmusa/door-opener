@@ -5,7 +5,7 @@ from webserver import WebServer
 VENDOR_ID=0x1a86
 PRODUCT_ID=0x7523
 HOST='::'
-PORT=6666
+PORT=1666
 ACTIVATION_TIME=5
 
 def main():
