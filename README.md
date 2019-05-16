@@ -60,7 +60,11 @@ Simple Webserver to use RaspberryPi and a Relay to open or activate things.
 1. Install git (as user: pi): `sudo apt-get install git`
 2. Clone door-opener (as user: keyman): `git clone https://github.com/develmusa/door-opener.git`
 3. Download requirements: `cd door-opener && pip install -r requirements.txt`
-
+4. Start door-opener: `python dooropener/dooropener.py`
+5. Test door-opener: Access Endpoint to activate the relay for 5 seconds `http://192.168.0.17:1666/sesame-open` or `http://192.168.0.17:1666/sesame-open/x` for x seconds.
+6. Add door-opener to autostart: 
+    - open /etc/rc.local
+    - add `nohup python /home/keyman/door-opener/dooropener.py &` before exit 0
 
 ### Setup for Connection
 
