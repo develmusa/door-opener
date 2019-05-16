@@ -74,7 +74,6 @@ To connect from outside of your network without your IP you need a DNS. Also you
     1. Sing up for Duck DNS
     2. Add your domain
     3. Keep your Duck DNS domain updated on your Raspberry Pi: Follow the steps on [Install Duck DNS](https://www.duckdns.org/install.jsp)
-    
-
-Take a look at [Duck DNS](https://www.duckdns.org/domains).
-- You also need to setup portforwarding on your router.
+2. Forward Port to your Raspberry Pi
+    1. Check IP of your Raspberry Pi 
+    2. Login into your router and forward port 1666 to the ip of your Raspberry Pi
