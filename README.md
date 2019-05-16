@@ -30,14 +30,15 @@ Simple Webserver to use RaspberryPi and a Relay to open or activate things.
 11. Close `raspi-config`
 12. Update Package list: `sudo apt-get update`
 13. Add a new user `sudo adduser keyman`
-14. Add a rule for the usbusers-groupe to access usb devices
+14. Add group for usb users: `sudo groupadd usbusers`
+15. Add a rule for the usbusers-groupe to access usb devices:
 
     ```bash
-    echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", MODE="0664", GROUP="usbusers"' >> /etc/udev/rules.d/
+    echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", MODE="0664", GROUP="usbusers"' | sudo tee -a /etc/udev/rules.d/99-com.rules
     ```
 
-15. Add user to groupe: `usermod -aG usbusers keyman`
-16. Change user to new user: `su keyman`
+16. Add user to groupe: `sudo usermod -aG usbusers keyman`
+17. Change user to new user: `su keyman`
 
 ### Test Relay Connection
 
@@ -58,6 +59,7 @@ Simple Webserver to use RaspberryPi and a Relay to open or activate things.
 
 1. Install git (as user: pi): `sudo apt-get install git`
 2. Clone door-opener (as user: keyman): `git clone https://github.com/develmusa/door-opener.git`
+3. Download requirements: `cd door-opener && pip install -r requirements.txt`
 
 
 ### Setup for Connection
