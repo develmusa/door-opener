@@ -59,7 +59,7 @@ Simple Webserver to use RaspberryPi and a Relay to open or activate things.
 
 1. Install git: `sudo apt-get install git`
 2. Install python3-pip: `sudo apt-get install python3-pip`
-3. Change rigths for python packages: `sudo chmod -R 775 /usr/local/lib/python3.5/dist-packages/`
+3. Change rigths for python packages: `sudo chmod -R 775 /usr/local/lib/python3.X/dist-packages/`
 2. Clone door-opener: `git clone https://github.com/develmusa/door-opener.git`
 3. Download requirements: `cd door-opener && sudo pip3 install -r requirements.txt`
 4. Start door-opener: `python3 dooropener/dooropener.py`
